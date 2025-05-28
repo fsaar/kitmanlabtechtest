@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		5677729F2DE768F600BA1D16 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5677729E2DE768F600BA1D16 /* README.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		567772752DE7627100BA1D16 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -19,6 +23,7 @@
 /* Begin PBXFileReference section */
 		567772642DE7626E00BA1D16 /* MobileTechTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileTechTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		567772742DE7627100BA1D16 /* MobileTechTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MobileTechTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5677729E2DE768F600BA1D16 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -55,6 +60,7 @@
 		5677725B2DE7626E00BA1D16 = {
 			isa = PBXGroup;
 			children = (
+				5677729E2DE768F600BA1D16 /* README.md */,
 				567772662DE7626E00BA1D16 /* MobileTechTest */,
 				567772772DE7627100BA1D16 /* MobileTechTestTests */,
 				567772652DE7626E00BA1D16 /* Products */,
@@ -162,6 +168,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5677729F2DE768F600BA1D16 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
