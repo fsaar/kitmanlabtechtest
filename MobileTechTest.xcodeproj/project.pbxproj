@@ -14,19 +14,11 @@
 			remoteGlobalIDString = 567772632DE7626E00BA1D16;
 			remoteInfo = MobileTechTest;
 		};
-		5677727F2DE7627100BA1D16 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5677725C2DE7626E00BA1D16 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 567772632DE7626E00BA1D16;
-			remoteInfo = MobileTechTest;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		567772642DE7626E00BA1D16 /* MobileTechTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileTechTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		567772742DE7627100BA1D16 /* MobileTechTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MobileTechTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5677727E2DE7627100BA1D16 /* MobileTechTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MobileTechTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -38,11 +30,6 @@
 		567772772DE7627100BA1D16 /* MobileTechTestTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = MobileTechTestTests;
-			sourceTree = "<group>";
-		};
-		567772812DE7627100BA1D16 /* MobileTechTestUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = MobileTechTestUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -62,13 +49,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5677727B2DE7627100BA1D16 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -77,7 +57,6 @@
 			children = (
 				567772662DE7626E00BA1D16 /* MobileTechTest */,
 				567772772DE7627100BA1D16 /* MobileTechTestTests */,
-				567772812DE7627100BA1D16 /* MobileTechTestUITests */,
 				567772652DE7626E00BA1D16 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -87,7 +66,6 @@
 			children = (
 				567772642DE7626E00BA1D16 /* MobileTechTest.app */,
 				567772742DE7627100BA1D16 /* MobileTechTestTests.xctest */,
-				5677727E2DE7627100BA1D16 /* MobileTechTestUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -140,29 +118,6 @@
 			productReference = 567772742DE7627100BA1D16 /* MobileTechTestTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		5677727D2DE7627100BA1D16 /* MobileTechTestUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5677728E2DE7627100BA1D16 /* Build configuration list for PBXNativeTarget "MobileTechTestUITests" */;
-			buildPhases = (
-				5677727A2DE7627100BA1D16 /* Sources */,
-				5677727B2DE7627100BA1D16 /* Frameworks */,
-				5677727C2DE7627100BA1D16 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				567772802DE7627100BA1D16 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				567772812DE7627100BA1D16 /* MobileTechTestUITests */,
-			);
-			name = MobileTechTestUITests;
-			packageProductDependencies = (
-			);
-			productName = MobileTechTestUITests;
-			productReference = 5677727E2DE7627100BA1D16 /* MobileTechTestUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -177,10 +132,6 @@
 						CreatedOnToolsVersion = 16.2;
 					};
 					567772732DE7627100BA1D16 = {
-						CreatedOnToolsVersion = 16.2;
-						TestTargetID = 567772632DE7626E00BA1D16;
-					};
-					5677727D2DE7627100BA1D16 = {
 						CreatedOnToolsVersion = 16.2;
 						TestTargetID = 567772632DE7626E00BA1D16;
 					};
@@ -202,7 +153,6 @@
 			targets = (
 				567772632DE7626E00BA1D16 /* MobileTechTest */,
 				567772732DE7627100BA1D16 /* MobileTechTestTests */,
-				5677727D2DE7627100BA1D16 /* MobileTechTestUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -216,13 +166,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		567772722DE7627100BA1D16 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5677727C2DE7627100BA1D16 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -246,13 +189,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5677727A2DE7627100BA1D16 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -260,11 +196,6 @@
 			isa = PBXTargetDependency;
 			target = 567772632DE7626E00BA1D16 /* MobileTechTest */;
 			targetProxy = 567772752DE7627100BA1D16 /* PBXContainerItemProxy */;
-		};
-		567772802DE7627100BA1D16 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 567772632DE7626E00BA1D16 /* MobileTechTest */;
-			targetProxy = 5677727F2DE7627100BA1D16 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -480,38 +411,6 @@
 			};
 			name = Release;
 		};
-		5677728F2DE7627100BA1D16 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.samedialabs.GameOfLife.MobileTechTestUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = MobileTechTest;
-			};
-			name = Debug;
-		};
-		567772902DE7627100BA1D16 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.samedialabs.GameOfLife.MobileTechTestUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = MobileTechTest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -538,15 +437,6 @@
 			buildConfigurations = (
 				5677728C2DE7627100BA1D16 /* Debug */,
 				5677728D2DE7627100BA1D16 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		5677728E2DE7627100BA1D16 /* Build configuration list for PBXNativeTarget "MobileTechTestUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5677728F2DE7627100BA1D16 /* Debug */,
-				567772902DE7627100BA1D16 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
