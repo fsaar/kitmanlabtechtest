@@ -1,6 +1,6 @@
 import Foundation
 
-struct Squad: Decodable {
+struct Squad: Decodable,Identifiable,Hashable {
     enum CodingKeys: String, CodingKey {
         case createdAt = "created_at"
         case id

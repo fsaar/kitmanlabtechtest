@@ -12,7 +12,7 @@ struct APIRequestManagerTests {
     func testRequestManagerValidJSON() async throws {
         
         // Setup mock response
-        let data = try Bundle.jsonData(for: "squads")
+        let data = Bundle.test.jsonData(for: "squads")!
         MockURLProtocol.mockData = data
         MockURLProtocol.mockResponse = HTTPURLResponse(
             url: URL(string: "https://kml-tech-test.glitch.me/squads")!,

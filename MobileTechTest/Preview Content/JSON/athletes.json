@@ -1,0 +1,26 @@
+[
+   {
+      "first_name":"Adam",
+      "last_name":"Beard",
+      "id":1964,
+      "image":{
+         "url":"https://kitman.imgix.net/avatar.jpg"
+      },
+      "username":"abeardathlete",
+      "squad_ids":[
+         78
+      ]
+   },
+   {
+      "first_name":"Al",
+      "last_name":"Saunders",
+      "id":5011,
+      "image":{
+         "url":"https://kitman.imgix.net/avatar.jpg"
+      },
+      "username":"asaunders",
+      "squad_ids":[
+         78
+      ]
+   }
+]

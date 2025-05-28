@@ -2,14 +2,19 @@
 import Foundation
 import CoreLocation
 
-public final class APIClient {
+protocol APIConformable {
+    func getSquads() async throws -> [Squad]
+    func getAthletes() async throws -> [Athlete]
+}
+
+public final class APIClient: APIConformable {
    
     private let apiManager: APIRequestable
-    
+    private static let jsonDecoder = JSONDecoder()
+
     init(_ manager: APIRequestable = APIRequestManager()) {
         self.apiManager = manager
     }
-    static let jsonDecoder = JSONDecoder()
     
     func getSquads() async throws -> [Squad] {
         let data = try await apiManager.dataWithPath(.squads)

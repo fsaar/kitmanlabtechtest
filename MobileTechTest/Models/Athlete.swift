@@ -1,6 +1,6 @@
 import Foundation
 
-struct Athlete: Decodable {
+struct Athlete: Decodable,Identifiable,Hashable {
     let firstName: String
     let lastName: String
     let id: Int

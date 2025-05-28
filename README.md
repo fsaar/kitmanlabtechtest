@@ -1,5 +1,10 @@
 # Kitman Labs Mobile Tech Test API
 
+## Thoughts
+- API methods squads / athletes should require authentication
+- API methods squads / athletes should allow for individual Id e.g. /squad/<id> , /athlete/<id>
+
+
 _A simple API to be use for Kitman Labs mobile team tech tests._
 
 ## Challenge
