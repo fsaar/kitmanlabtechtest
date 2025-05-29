@@ -2,6 +2,7 @@
 import SwiftUI
 
 struct SquadView: View {
+    @Binding var path: NavigationPath
     @State var model = AthleteViewModel()
     
     let squadId: Int
@@ -10,16 +11,12 @@ struct SquadView: View {
         List {
             ForEach(model.athletesInSquad(squadId)) { athlete in
                 HStack {
-                    NavigationLink(value: athlete) {
+                    NavigationLink(value: Route.athleteView(athlete, squadsWithIds(athlete.squadIds))) {
                         ProfileView(athlete: athlete)
                     }
                     Spacer()
                 }
             }
-        }
-        .navigationDestination(for: Athlete.self) { athlete in
-            let squads = squadsWithIds(athlete.squadIds)
-            AthleteView(athlete: athlete, squads: squads)
         }
         .task {
             await model.loadAthletes()
@@ -32,10 +29,10 @@ struct SquadView: View {
     }
 }
 
-#Preview {
-    let data = Bundle.main.jsonData(for: "squads")!
-    let squads = try! JSONDecoder().decode([Squad].self, from: data)
-    SquadView(squadId: 72, squads: squads).environmentObject(ImageCache())
-}
+//#Preview {
+//    let data = Bundle.main.jsonData(for: "squads")!
+//    let squads = try! JSONDecoder().decode([Squad].self, from: data)
+//    SquadView(squadId: 72, squads: squads).environmentObject(ImageCache())
+//}
 
 

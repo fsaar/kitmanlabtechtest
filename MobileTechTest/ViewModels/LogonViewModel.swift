@@ -1,10 +1,10 @@
 import Observation
+import Combine
 
 
-@Observable
-class LogonViewModel {
+class LogonViewModel: ObservableObject {
     private let client: APIClient
-    var loggedIn = false
+    @Published var loggedIn = false
     
     init(client: APIClient = APIClient()) {
         self.client = client

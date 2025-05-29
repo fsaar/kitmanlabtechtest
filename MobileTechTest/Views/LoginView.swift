@@ -2,9 +2,11 @@ import SwiftUI
 
 
 struct LoginView: View {
+    @Binding var path: NavigationPath
     @State private var userName: String = ""
     @State private var password: String = ""
     @State var model : LogonViewModel
+    @State var isLoggingIn = false
     var isLogonButtonEnabled: Bool {
         return !userName.isEmpty && !password.isEmpty
     }
@@ -20,23 +22,27 @@ struct LoginView: View {
             }
            
             Button("Logon") {
+                
                 Task {
+                    self.isLoggingIn = true
                     await model.logon(username: userName, password: password)
+                    self.isLoggingIn = false
                 }
             }
             .padding(.top,16)
-            .disabled(isLogonButtonEnabled)
+            .disabled(!isLogonButtonEnabled || isLoggingIn)
         }
         .font(.title)
         .padding(16)
-        .navigationDestination(isPresented:$model.loggedIn) {
-            SquadListView(model: SquadViewModel())
-            
+        .onReceive(model.$loggedIn) { loggedIn in
+            if loggedIn {
+                path.append(Route.squadListView)
+            }
         }
     }
        
 }
-
-#Preview {
-    LoginView(model: LogonViewModel())
-}
+//
+//#Preview {
+//    LoginView(model: LogonViewModel())
+//}

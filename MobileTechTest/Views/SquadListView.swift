@@ -1,13 +1,13 @@
 import SwiftUI
 
 struct SquadListView: View {
+    @Binding var path: NavigationPath
     @State var model : SquadViewModel
-   
     var body: some View {
         List {
             ForEach(model.squads) { squad in
                 HStack {
-                    NavigationLink(value: squad) {
+                    NavigationLink(value: Route.squadView(squad.id, model.squads)) {
                         Text(squad.name)
                     }
                     Spacer()
@@ -15,10 +15,6 @@ struct SquadListView: View {
             }
             
         }
-        .navigationDestination(for: Squad.self) { squad in
-            SquadView(squadId: squad.id, squads: model.squads)
-        }
-        
         .task {
             await model.loadSquads()
         }
