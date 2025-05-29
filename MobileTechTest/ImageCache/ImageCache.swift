@@ -5,7 +5,7 @@ protocol ImageCacheable {
 }
 
 actor ImageCache : ObservableObject,ImageCacheable {
-    let cache = NSCache<NSURL, NSData>()
+    private let cache = NSCache<NSURL, NSData>()
     
     func imageForURL(_ url: NSURL) async -> Data? {
         if let data = cache.object(forKey: url as NSURL)  {

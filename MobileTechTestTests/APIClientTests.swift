@@ -4,10 +4,18 @@ import Foundation
 @testable import MobileTechTest
 
 class MockAPIRequestable: APIRequestable {
+    func logon(with credential: MobileTechTest.Credential) async throws -> Data {
+        try defaultHandler()
+    }
+    
     var mockData: Data?
     var mockError: Error?
     
     func dataWithPath(_ path: APIRequestManager.Path) async throws -> Data {
+        try defaultHandler()
+    }
+    
+    private func defaultHandler() throws -> Data {
         if let error = mockError {
             throw error
         }
@@ -17,6 +25,75 @@ class MockAPIRequestable: APIRequestable {
 
 @Suite("APIClientTests")
 struct APIClientTests {
+    
+    @Suite("Authentication")
+    struct AuthenticationTests {
+        @Test("APIClient logon with valid credentials")
+        func testLogonSuccess() async throws {
+            let mockData = """
+            {
+                "username": "abc123",
+            }
+            """.data(using: .utf8)!
+            
+            let mockRequestable = MockAPIRequestable()
+            mockRequestable.mockData = mockData
+            
+            let apiClient = APIClient(mockRequestable)
+            let credential = Credential(username: "testuser", password: "testpass")
+            
+            let result = try await apiClient.logon(with: credential)
+            
+            #expect(result == true)
+        }
+        
+        @Test("APIClient logon handles network error")
+        func testLogonNetworkError() async throws {
+            let mockRequestable = MockAPIRequestable()
+            mockRequestable.mockError = URLError(.networkConnectionLost)
+            
+            let apiClient = APIClient(mockRequestable)
+            let credential = Credential(username: "testuser", password: "testpass")
+            
+            await #expect(throws: URLError.self) {
+                try await apiClient.logon(with: credential)
+            }
+        }
+        
+        @Test("APIClient logon handles authentication error")
+        func testLogonAuthenticationError() async throws {
+            enum AuthError: Error {
+                case unauthorized
+            }
+            
+            let mockRequestable = MockAPIRequestable()
+            mockRequestable.mockError = AuthError.unauthorized
+            
+            let apiClient = APIClient(mockRequestable)
+            let credential = Credential(username: "wronguser", password: "wrongpass")
+            
+            await #expect(throws: AuthError.self) {
+                try await apiClient.logon(with: credential)
+            }
+        }
+        
+        @Test("APIClient logon with empty credentials")
+        func testLogonEmptyCredentials() async throws {
+            let mockData = "error".data(using: .utf8)!
+            
+            let mockRequestable = MockAPIRequestable()
+            mockRequestable.mockData = mockData
+            
+            let apiClient = APIClient(mockRequestable)
+            let credential = Credential(username: "", password: "")
+            
+            
+            await #expect(throws: NSError.self) {
+                try await apiClient.logon(with: credential)
+            }
+          
+        }
+    }
     
     @Suite("squads")
     struct SquadTests {

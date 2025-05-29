@@ -1,11 +1,34 @@
 # Kitman Labs Mobile Tech Test API
 
-## Thoughts
+
+
+_A simple API to be use for Kitman Labs mobile team tech tests._
+
+## Implementation
+### Features
+- clean Architecture
+    - Network layer / APIRequestManager
+    - Model layer via APIClient for Model instantiation
+    - Dedicated observable ViewModels on top of model layer to load / propagate change
+- loose coupling
+    - Dependency injection based on protocol to enable tests
+- Unit tests via SwiftTesting     
+
+### Shortcuts
+- No localisation / localised bundle
+- No accessibility support
+- No Errorhandling
+- dataModels used as viewmodels
+- ImageCache is not routed through Network layer (APIRequestManager / APIClient)
+- no xcuitests
+- initial set of unit tests for demonstration purposes
+- no snapshot tests
+
+### Thoughts
 - API methods squads / athletes should require authentication
 - API methods squads / athletes should allow for individual Id e.g. /squad/<id> , /athlete/<id>
 
 
-_A simple API to be use for Kitman Labs mobile team tech tests._
 
 ## Challenge
 

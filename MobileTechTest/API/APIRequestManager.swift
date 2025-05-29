@@ -2,7 +2,9 @@ import Foundation
 
 protocol APIRequestable {
     func dataWithPath(_ path: APIRequestManager.Path) async throws -> Data
+    func logon(with credential: Credential) async throws -> Data
 }
+
 
 class APIRequestManager: APIRequestable {
     enum RequestManagerErrorType : Error {
@@ -11,6 +13,7 @@ class APIRequestManager: APIRequestable {
     enum Path: String {
         case squads
         case athletes
+        case session
         var url: URL? {
             URL(string:"\(APIRequestManagerBaseURL)\(self.rawValue)")
         }
@@ -39,5 +42,22 @@ class APIRequestManager: APIRequestable {
         }
         let (data,_) = try await session.data(from: url)
         return data
+    }
+    
+    func logon(with credential: Credential) async throws -> Data {
+        guard let url = Path.session.url else {
+            throw RequestManagerErrorType.invalidPath(.session)
+        }
+        let request = try await request(with: url, with: credential)
+        let (data,_) = try await session.data(for: request)
+        return data
+    }
+    
+    private func request(with url: URL, with credential: Credential) async throws -> URLRequest {
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        let bodyData = try JSONEncoder().encode(credential)
+        request.httpBody = bodyData
+        return request
     }
 }

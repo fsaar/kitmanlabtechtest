@@ -27,6 +27,15 @@ public final class APIClient: APIConformable {
         let athletes = try Self.jsonDecoder.decode([Athlete].self,from: data)
         return athletes
     }
+    
+    func logon(with credential: Credential) async throws -> Bool {
+        let data = try await apiManager.logon(with: credential)
+        let dict = try JSONSerialization.jsonObject(with: data)
+        guard let dict = dict as? [String:Any] else {
+            return false
+        }
+        return dict.keys.count > 0
+    }
 }
 
 
