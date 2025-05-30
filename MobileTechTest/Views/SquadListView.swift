@@ -21,11 +21,10 @@ struct SquadListView: View {
         
     }
 }
-//
-//#Preview {
-//    let data = Bundle.main.jsonData(for: "squads")!
-//    let squads = try! JSONDecoder().decode([Squad].self, from: data)
-//    SquadListView(squads: squads)
-//}
-//
+
+#Preview {
+    @Previewable @State var path = NavigationPath()
+    SquadListView(path:$path,model: SquadViewModel())
+}
+
 

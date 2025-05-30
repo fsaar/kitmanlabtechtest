@@ -29,10 +29,11 @@ struct SquadView: View {
     }
 }
 
-//#Preview {
-//    let data = Bundle.main.jsonData(for: "squads")!
-//    let squads = try! JSONDecoder().decode([Squad].self, from: data)
-//    SquadView(squadId: 72, squads: squads).environmentObject(ImageCache())
-//}
+#Preview {
+    @Previewable @State var path = NavigationPath()
+    let data = Bundle.main.jsonData(for: "squads")!
+    let squads = try! JSONDecoder().decode([Squad].self, from: data)
+    SquadView(path:$path,squadId: 72, squads: squads).environmentObject(ImageCache())
+}
 
 
