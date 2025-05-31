@@ -5,16 +5,20 @@
 _A simple API to be use for Kitman Labs mobile team tech tests._
 
 ## Implementation
+[Architectural Overview](file:///./MobileTextTest/Docs/architecture.png)
+
 ### Features
 - clean Architecture
     - Network layer / APIRequestManager
     - Model layer via APIClient for Model instantiation
     - Dedicated observable ViewModels on top of model layer to load / propagate change
-- loose coupling
-    - Dependency injection based on protocol to enable tests
+- loose coupling via protocol classes that enable mocking via protocol conforming mocks
+- Dependency injection based on protocol to enable tests
+- Dedicated modules with a single reponsibility to support loose coupling
 - Unit tests via SwiftTesting     
 
 ### Shortcuts
+- Simplistic UI 
 - No localisation / localised bundle
 - No accessibility support
 - No Errorhandling

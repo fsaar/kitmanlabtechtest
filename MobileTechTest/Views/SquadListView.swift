@@ -15,6 +15,7 @@ struct SquadListView: View {
             }
             
         }
+        .navigationBarBackButtonHidden(true)
         .task {
             await model.loadSquads()
         }
