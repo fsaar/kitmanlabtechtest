@@ -21,7 +21,10 @@ struct ProfileView: View {
             if let imageURL = athlete.imageURL {
                 let data = await cache.imageForURL(imageURL as NSURL)
                 if let data,let image = UIImage(data: data) {
-                    profileImage = Image(uiImage: image)
+                    Task { @MainActor in
+                        profileImage = Image(uiImage: image)
+                    }
+                   
                 }
             }
             

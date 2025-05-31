@@ -1,34 +1,61 @@
 # Kitman Labs Mobile Tech Test API
 
-
-
 _A simple API to be use for Kitman Labs mobile team tech tests._
 
 ## Implementation
-[Architectural Overview](file:///./MobileTextTest/Docs/architecture.png)
+![Architecture Diagram](./MobileTechTest/Docs/architecture.png)
 
 ### Features
-- clean Architecture
-    - Network layer / APIRequestManager
-    - Model layer via APIClient for Model instantiation
-    - Dedicated observable ViewModels on top of model layer to load / propagate change
-- loose coupling via protocol classes that enable mocking via protocol conforming mocks
-- Dependency injection based on protocol to enable tests
-- Dedicated modules with a single reponsibility to support loose coupling
-- Unit tests via SwiftTesting     
+Implementation uses a clean Architecture where inner / upper layers use services from outer / lower layers:
+   - Network layer / APIRequestManager: 
+        - single purpose module to provide foundational Rest services
+        - conforms to `APIRequestable` for loose coupling and enable testing in `APIClient`
+   - Model layer via `APIClient` for Model instantiation:
+        - uses Network layer to retrieve Data & instantiates data to respective model
+        - takes advantage of POP to inject `APIRequestable` mock object to enable testing
+        - single purpose module to abstract API methods to request squads / athlete data
+   - Dedicated observable view models on top of model layer to load / propagate change
+      - Dedicated View Models for athlete & squads request data on background thread and switch to main thread to update observables
+   - Loosely coupled views connected via 'NavigationPath' that allow injection of previously retrieved data
+   - Background / data tasks offloaded of Mainthread to unblock UI tasks and scheduled on background threads
+   - Global `ImageCache` to add image caching support
+      - provided via environment to allow individual views to request images
+      - requests image data on background thread to avoid redundancy. 
+      - Based on `NSCache` to take advantage of its memory pressure handling 
+- Unit tests via SwiftTesting   
+   - takes advantage of protocol abstraction of lower layers to mock
+- Key Design Patterns: #POP, #Clean architecture, #Dependency Injection, #Single Responsibility Principle
 
 ### Shortcuts
-- Simplistic UI 
+Shortcuts have been taken:
+- Simplistic UI:
+   - to visualise requested objects with an emphasis on the architecture
 - No localisation / localised bundle
-- No accessibility support
-- No Errorhandling
-- dataModels used as viewmodels
-- ImageCache is not routed through Network layer (APIRequestManager / APIClient)
-- no xcuitests
+   - Skipped due to being a tech demo
+- No accessibility support:
+   - Skipped due to being a tech demo
+- No error handling:
+   - Skipped due to being a tech demo
+   - errors are mapped to nil-optional or handled via empty catch - blocks. No propagation to user i.e. no user feedback
+- Theming / Dark mode:
+   - Skipped due to being a tech demo
+- data models used as view models
+   - Skipped due to simplistic data models
+   - Models used in view models e.g. `SquadViewModel` contain too many properties. In general changes in models propagate re-rendering of View stack. Although a Swift UI `View` is lightweight this may eventually cause performance issues often visible in glitching animations. Hence, having not-properties e.g. dates may cause a performance impact later on
+- ImageCache is not routed through Network layer (`APIRequestManager` / `APIClient`)
+  - Skipped due to being a tech demo for simplicity’s sake
+- no XCUitests
+  -  Skipped due to being a tech demo for simplicity’s sake
 - initial set of unit tests for demonstration purposes
+  - Unit test code coverage is insufficient.
+  - Provided tests only to be considered as an "How-to" approach
 - no snapshot tests
+- Skipped due to being a tech demo for simplicity sake
+- Dynamic Fonts:
+   - Supported as part of SwiftUI but not validated.
 
 ### Thoughts
+- Constrained Login button to require at least 3 characters for password & username. API doesn't seem to return an error
 - API methods squads / athletes should require authentication
 - API methods squads / athletes should allow for individual Id e.g. /squad/<id> , /athlete/<id>
 
